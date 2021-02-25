@@ -87,14 +87,14 @@ srcupdate:
 
 # update library directory
 libupdate: 
-	cd lib; $(MAKE) RANLIB="$(RANLIB)"
+	cd lib; $(MAKE) RANLIB="$(RANLIB)" CC="$(CC)"
 
 # update test software directory
-testupdate: 
+testupdate: libupdate 
 	cd test; $(MAKE)
 
 # update task software directory
-taskupdate: 
+taskupdate: libupdate
 	cd tasks; $(MAKE)
 
 # update work directory
@@ -102,7 +102,7 @@ work:
 	cd src/work; $(MAKE) CC="$(CC)" CFLAGS="$(CFLAGS)" LIB="$(LIB)"
 
 # update python directory
-pythonupdate: 
+pythonupdate: libupdate
 	cd python; $(MAKE)
 
 # update from cvs repository

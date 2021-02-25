@@ -34,7 +34,7 @@
 #
 #------------------------------------------------------------------------
 # targets to build
-TARGETS =  libObit.a
+TARGETS =  libObit.a libObit.so
 SHTARGETS = libObit.so
 
 # list of object modules
@@ -50,8 +50,7 @@ libObit.a: ${OBJECTS}
 
 #  build shared Obit library, put in dependencies library
 libObit.so: ${OBJECTS}
-	gcc -shared -o libObit.so  ${OBJECTS}
-	cp libObit.so ../../../deps/lib
+	gcc -shared -o libObit.so  ${OBJECTS} -lglib-2.0 -lpthread -lgthread-2.0
 
 clean:
 	rm -f $(TARGETS) $(SHTARGETS)

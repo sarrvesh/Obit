@@ -37,10 +37,11 @@ LIBDIR = $(top_srcdir)/lib/
 CC = @CC@
 CPPFLAGS = @CPPFLAGS@ 
 # Turn off memory usage checking
-CFLAGS = -Wall -fno-strict-aliasing @CFLAGS@ -DFASTOBITMEM 
+# Add AVX instructions
+CFLAGS = -fno-strict-aliasing @CFLAGS@ -DFASTOBITMEM -msse -mavx -mavx2 -lstdc++
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
-DEFS = @DEFS@
+DEFS = @DEFS@ -DHAVE_AVX=1 -DHAVE_AVX2=1
 
 ALL_CPPFLAGS = $(CPPFLAGS) -I$(top_srcdir)/include $(DEFS) \
 	@CFITSIO_CPPFLAGS@ @FFTW_CPPFLAGS@ @FFTW3_CPPFLAGS@ @XMLRPC_SERVER_CPPFLAGS@ 

@@ -43,7 +43,7 @@ top_srcdir = @top_srcdir@
 CC = @CC@
 #CPPFLAGS = @CPPFLAGS@
 CPPFLAGS = 
-CFLAGS = @CFLAGS@
+CFLAGS = @CFLAGS@ -msse -mavx -mavx2 -DHAVE_AVX=1 -DHAVE_AVX2=1
 LDFLAGS = @LDFLAGS@
 
 ALL_CPPFLAGS = $(CPPFLAGS) -I$(top_srcdir)/include @CFITSIO_CPPFLAGS@ \
